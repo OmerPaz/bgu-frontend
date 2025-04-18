@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('pagination and notes appear correctly', async ({ page }) => {
-  await page.goto('http://localhost:5173');
+  await page.goto('http://localhost:3000');
 
   // Check that exactly 10 notes are shown
   const notes = page.locator('.note');
