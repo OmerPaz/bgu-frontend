@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import request from 'supertest';
 import mongoose from 'mongoose';
-import { createApp } from '../expressApp';
+import { createApp } from '../src/expressApp';
 import { connectMongo } from '../config/mongo';
 import { Note } from '../models/note';
 

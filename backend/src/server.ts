@@ -1,6 +1,6 @@
 (async () => {
   try {
-    const { connectMongo } = await import('./config/mongo.js');
+    const { connectMongo } = await import('../config/mongo.js');
     const { createApp } = await import('./expressApp.js');
 
     const PORT = process.env.PORT || 3001;

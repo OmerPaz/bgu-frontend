@@ -2,9 +2,9 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 
-import { logger } from './middlewares/logger.js';
-import { noteRouter } from './routes/noteRoutes.js';
-import testRouter from './routes/testRouter.js';
+import { logger } from '../middlewares/logger.js';
+import { noteRouter } from '../routes/noteRoutes.js';
+import testRouter from '../routes/testRouter.js';
 
 export const createApp = () => {
   const app = express();
