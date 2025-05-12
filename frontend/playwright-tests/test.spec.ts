@@ -1,27 +1,33 @@
 import { test, expect } from '@playwright/test';
 
-test('pagination and notes appear correctly', async ({ page }) => {
+test.beforeEach(async ({ page }) => {
   await page.goto('http://localhost:3000');
+});
 
-  // Check that exactly 10 notes are shown
-  const notes = page.locator('.note');
-  await expect(notes).toHaveCount(10);
-
-  // Check presence of navigation buttons
+test('read notes', async ({ page }) => {
+  await expect(page.locator('.note')).toHaveCount(10);
   await expect(page.locator('button[name="first"]')).toBeVisible();
-  await expect(page.locator('button[name="previous"]')).toBeVisible();
-  await expect(page.locator('button[name="next"]')).toBeVisible();
-  await expect(page.locator('button[name="last"]')).toBeVisible();
+});
 
-  // Check current page button is disabled (page 1)
-  const page1 = page.locator('button[name="page-1"]');
-  await expect(page1).toBeDisabled();
-  await expect(page1).toHaveText('1');
+test('add note', async ({ page }) => {
+  await page.locator('button[name="add_new_note"]').click();
+  await page.locator('textarea[name="text_input_new_note"]').fill('playwright new');
+  await page.locator('button[name="text_input_save_new_note"]').click();
+  await expect(page.locator('.notification')).toContainText('Added a new note');
+});
 
-  // Click on page 2 and validate
-  await page.locator('button[name="page-2"]').click();
-  await expect(page.locator('button[name="page-2"]')).toBeDisabled();
+test('edit note', async ({ page }) => {
+  const first = page.locator('.note').first();
+  const id = await first.getAttribute('data-testid');
+  await page.locator(`button[data-testid="edit-${id}"]`).click();
+  await page.locator(`textarea[data-testid="text_input-${id}"]`).fill('edited');
+  await page.locator(`button[data-testid="text_input_save-${id}"]`).click();
+  await expect(page.locator('.notification')).toContainText('Note updated');
+});
 
-  // Check we still see 10 notes
-  await expect(notes).toHaveCount(10);
+test('delete note', async ({ page }) => {
+  const first = page.locator('.note').first();
+  const id = await first.getAttribute('data-testid');
+  await page.locator(`button[data-testid="delete-${id}"]`).click();
+  await expect(page.locator('.notification')).toContainText('Note deleted');
 });

@@ -1,93 +1,50 @@
 import React from 'react';
+import { useNotes } from './NotesContext';
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onChangePage: (page: number) => void;
-}
+export default function Pagination() {
+  const { state, dispatch } = useNotes();
+  const { page, totalPages } = state;
 
-function Pagination({ currentPage, totalPages, onChangePage }: PaginationProps) {
-  const getPageNumbers = (): number[] => {
-    if (totalPages <= 5) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
+  const setPage = (p: number) => dispatch({ type: 'set-page', page: p });
 
-    if (currentPage < 3) {
-      return [1, 2, 3, 4, 5];
-    }
-
-    if (currentPage >= 3 && currentPage <= totalPages - 2) {
-      return [
-        currentPage - 2,
-        currentPage - 1,
-        currentPage,
-        currentPage + 1,
-        currentPage + 2,
-      ].filter(page => page >= 1 && page <= totalPages);
-    }
-
-    return [
-      totalPages - 4,
-      totalPages - 3,
-      totalPages - 2,
-      totalPages - 1,
-      totalPages,
-    ];
+  const windowPages = () => {
+    if (totalPages === 1) return [1]; // handle empty DB / single page case
+    if (totalPages <= 5) return Array.from({ length: totalPages }, (_, i) => i + 1);
+    if (page < 3) return [1, 2, 3, 4, 5];
+    if (page > totalPages - 2) return [totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+    return [page - 2, page - 1, page, page + 1, page + 2];
   };
 
-  const handlePageClick = (page: number) => {
-    if (page !== currentPage && page >= 1 && page <= totalPages) {
-      onChangePage(page);
-    }
-  };
-
-  const pageNumbers = getPageNumbers();
+  const nums = windowPages();
 
   return (
+
     <div>
-      {/* Navigation Buttons */}
-      <button name="first" onClick={() => handlePageClick(1)} disabled={currentPage === 1}>
+      <button name="first" onClick={() => setPage(1)} disabled={page === 1}>
         First
       </button>
-
-      <button
-        name="previous"
-        onClick={() => handlePageClick(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
+      <button name="previous" onClick={() => setPage(page - 1)} disabled={page === 1}>
         Previous
       </button>
 
-      {/* Page Number Buttons */}
-      {pageNumbers.map((num) => (
+      {nums.map((n) => (
         <button
-          key={num}
-          name={`page-${num}`}
-          onClick={() => handlePageClick(num)}
-          disabled={num === currentPage}
-          style={{ fontWeight: num === currentPage ? 'bold' as const : 'normal' }}
+          key={n}
+          name={`page-${n}`}
+          disabled={n === page}
+          onClick={() => setPage(n)}
+          style={{ fontWeight: n === page ? 'bold' : 'normal' }}
         >
-          {num}
+          {n}
         </button>
       ))}
 
-      <button
-        name="next"
-        onClick={() => handlePageClick(currentPage + 1)}
-        disabled={currentPage === totalPages}
-      >
+      <button name="next" onClick={() => setPage(page + 1)} disabled={page === totalPages}>
         Next
       </button>
-
-      <button
-        name="last"
-        onClick={() => handlePageClick(totalPages)}
-        disabled={currentPage === totalPages}
-      >
+      <button name="last" onClick={() => setPage(totalPages)} disabled={page === totalPages}>
         Last
       </button>
     </div>
   );
 }
-
-export default Pagination;
