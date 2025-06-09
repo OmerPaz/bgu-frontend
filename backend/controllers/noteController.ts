@@ -21,17 +21,29 @@ export const fetchNote = async (req: Request, res: Response): Promise<void> => {
 
 /* POST /notes */
 export const addNote = async (req: Request, res: Response): Promise<void> => {
-  const { title, author, content } = req.body;
+  const { title, content } = req.body;
   if (!title || !content) {
     res.status(400).json({ error: 'title & content required' });
     return;
   }
-  const created = await noteService.createNote({ title, author, content });
+  const user = (req as any).user || null;
+  const author = user ? { name: user.name, email: user.email } : null;
+  const created = await noteService.createNote({ title, author, content, user: user?._id ?? null });
   res.status(201).json(created);
 };
 
 /* PUT /notes/:id */
 export const editNote = async (req: Request, res: Response): Promise<void> => {
+  const note = await noteService.getNoteById(req.params.id);
+  const current = (req as any).user;
+  if (!note) {
+    res.status(404).json({ error: 'Not Found' });
+    return;
+  }
+  if (current && note.user && note.user.toString() !== current._id.toString()) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
   const updated = await noteService.updateNote(req.params.id, req.body);
   if (!updated) {
     res.status(404).json({ error: 'Not Found' });
@@ -42,6 +54,16 @@ export const editNote = async (req: Request, res: Response): Promise<void> => {
 
 /* DELETE /notes/:id */
 export const removeNote = async (req: Request, res: Response): Promise<void> => {
+  const note = await noteService.getNoteById(req.params.id);
+  const current = (req as any).user;
+  if (!note) {
+    res.status(404).json({ error: 'Not Found' });
+    return;
+  }
+  if (current && note.user && note.user.toString() !== current._id.toString()) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
   const deleted = await noteService.deleteNote(req.params.id);
   if (!deleted) {
     res.status(404).json({ error: 'Not Found' });

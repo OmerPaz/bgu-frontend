@@ -8,7 +8,7 @@ export default function AddNewNote({ onAdded }: { onAdded: () => void }) {
   const [content, setContent] = useState('');
 
   const save = async () => {
-    await api.post('/notes', { title: 'new note', content, author: null });
+    await api.post('/notes', { title: 'new note', content });
     setAdding(false);
     setContent('');
     dispatch({ type: 'notification', message: 'Added a new note' });

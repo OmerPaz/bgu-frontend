@@ -5,6 +5,7 @@ import 'express-async-errors';
 import { logger } from '../middlewares/logger.js';
 import { noteRouter } from '../routes/noteRoutes.js';
 import testRouter from '../routes/testRouter.js';
+import userRouter from '../routes/userRoutes.js';
 
 export const createApp = () => {
   const app = express();
@@ -18,6 +19,7 @@ export const createApp = () => {
   app.use(logger);
 
   app.use('/notes', noteRouter);
+  app.use('/', userRouter);
 
   app.get('/health', (_req: Request, res: Response) => {
     res.send('OK');

@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { Note } from './types';
 import { api } from './api';
 import { useNotes } from './NotesContext';
+import { useAuth } from './AuthContext';
 
 export default function NoteItem({ note, onChange }: { note: Note; onChange: () => void }) {
   const { dispatch } = useNotes();
+  const { user } = useAuth();
   const [editing, setEditing] = useState(false);
   const [val, setVal] = useState(note.content);
+  const isAuthor = user && note.author?.email === user.email;
 
   const remove = async () => {
     await api.delete(`/notes/${note._id}`);
@@ -29,10 +32,12 @@ export default function NoteItem({ note, onChange }: { note: Note; onChange: () 
       {editing && (
         <textarea data-testid={`text_input-${note._id}`} value={val} onChange={(e) => setVal(e.target.value)} />
       )}
-      <button data-testid={`delete-${note._id}`} onClick={remove}>
-        Delete
-      </button>
-      {!editing && (
+      {isAuthor && (
+        <button data-testid={`delete-${note._id}`} onClick={remove}>
+          Delete
+        </button>
+      )}
+      {isAuthor && !editing && (
         <button data-testid={`edit-${note._id}`} onClick={() => setEditing(true)}>
           Edit
         </button>
