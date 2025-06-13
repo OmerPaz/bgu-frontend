@@ -1,0 +1,11 @@
+export interface Author {
+    name: string;
+    email: string;
+  }
+  
+  export interface Note {
+    _id: string;
+    title: string;
+    author: Author | null;
+    content: string;
+  }
