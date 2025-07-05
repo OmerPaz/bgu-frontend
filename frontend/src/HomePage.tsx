@@ -15,7 +15,7 @@ export default function HomePage() {
   const { token, user, logout } = useAuth();
   const { state, dispatch } = useNotes();
   const { page, cache } = state as any; // we will extend state type later
-  const { enabled: sanitizerOn, setEnabled: setSanitizer } = useSanitizer();
+  const { enabled: sanitizerOn, toggleSanitizer } = useSanitizer();
   const navigate = useNavigate();
 
   const pagesWindow = (pg: number, total: number) => {
@@ -60,29 +60,20 @@ export default function HomePage() {
     <div>
       <h1>Notes</h1>
       <div style={{ marginBottom: '1rem' }}>
-        <strong>Sanitizer: </strong>
-        <label>
-          <input
-            type="radio"
-            name="sanitizer_toggle"
-            value="on"
-            checked={sanitizerOn}
-            onChange={() => setSanitizer(true)}
-            data-testid="sanitizer_on"
-          />
-          On
-        </label>
-        <label style={{ marginLeft: '0.5rem' }}>
-          <input
-            type="radio"
-            name="sanitizer_toggle"
-            value="off"
-            checked={!sanitizerOn}
-            onChange={() => setSanitizer(false)}
-            data-testid="sanitizer_off"
-          />
-          Off
-        </label>
+        <button
+          onClick={toggleSanitizer}
+          data-testid="sanitizer_toggle"
+          style={{
+            padding: '0.5rem 1rem',
+            backgroundColor: sanitizerOn ? '#4CAF50' : '#f44336',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer'
+          }}
+        >
+          Sanitizer: {sanitizerOn ? 'ON' : 'OFF'}
+        </button>
       </div>
       {!token && (
         <>

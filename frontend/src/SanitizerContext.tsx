@@ -2,20 +2,23 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface SanitizerCtx {
   enabled: boolean;
-  setEnabled: (v: boolean) => void;
+  toggleSanitizer: () => void;
 }
 
 const SanitizerContext = createContext<SanitizerCtx>({
   enabled: true,
-  setEnabled: () => {},
+  toggleSanitizer: () => {},
 });
 
 export const useSanitizer = () => useContext(SanitizerContext);
 
 export const SanitizerProvider = ({ children }: { children: ReactNode }) => {
   const [enabled, setEnabled] = useState<boolean>(true);
+  
+  const toggleSanitizer = () => setEnabled(!enabled);
+  
   return (
-    <SanitizerContext.Provider value={{ enabled, setEnabled }}>
+    <SanitizerContext.Provider value={{ enabled, toggleSanitizer }}>
       {children}
     </SanitizerContext.Provider>
   );

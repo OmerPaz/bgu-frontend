@@ -24,15 +24,21 @@ test.describe('Rich Notes & XSS', () => {
     await page.getByTestId('login_form_password').fill(pwd);
     await page.getByTestId('login_form_login').click();
 
+    /* Wait for login to complete and redirect */
+    await page.waitForURL(ROOT);
+
     /* Add a benign rich note */
     await page.locator('button[name="add_new_note"]').click();
-    const richContent = '<b>hello world</b>';
+    const unique = randomStr();
+    const richContent = `<b>hello ${unique}</b>`;
     await page.locator('textarea[name="text_input_new_note"]').fill(richContent);
     await page.locator('button[name="text_input_save_new_note"]').click();
-    const lastNote = page.locator('.note-content').last();
-    await expect(lastNote).toContainText('hello world');
-    await expect(lastNote).toHaveText(/hello world/);
-    const html = await lastNote.innerHTML();
+    
+    /* Wait for the specific note to appear and verify it */
+    const newNote = page.locator('.note-content', { hasText: `hello ${unique}` }).first();
+    await newNote.waitFor({ state: 'visible' });
+    await expect(newNote).toContainText(`hello ${unique}`);
+    const html = await newNote.innerHTML();
     expect(html).toContain('<b>');
 
     /* Add malicious note */
@@ -41,12 +47,15 @@ test.describe('Rich Notes & XSS', () => {
     await page.locator('textarea[name="text_input_new_note"]').fill(payload);
     await page.locator('button[name="text_input_save_new_note"]').click();
 
+    /* Wait a moment for the note to be processed */
+    await page.waitForTimeout(5000);
+
     // Sanitizer ON (default) -> attribute should NOT be present
     const attrBefore = await page.evaluate(() => document.body.getAttribute('xss'));
     expect(attrBefore).toBeNull();
 
     // Turn sanitizer OFF
-    await page.getByTestId('sanitizer_off').click();
+    await page.getByTestId('sanitizer_toggle').click();
 
     // Attribute should eventually appear (XSS executed)
     await page.waitForFunction(() => document.body.getAttribute('xss') === '1');
