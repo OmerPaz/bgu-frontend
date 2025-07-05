@@ -6,5 +6,10 @@ export default {
       // allow importing .js in TS files without extension mismatch
       '^(\\.{1,2}/.*)\\.js$': '$1',
     },
-    transform: {},   // ts-jest handles TS; leave others as-is
+    globals: {
+      'ts-jest': {
+        useESM: true,
+        tsconfig: 'tsconfig.json',
+      },
+    },
   };
