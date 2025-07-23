@@ -7,7 +7,6 @@ import { Note } from './types';
 import NotesList from './NotesList';
 import Pagination from './Pagination';
 import AddNewNote from './AddNewNote';
-import { useSanitizer } from './SanitizerContext';
 
 const POSTS_PER_PAGE = 10;
 
@@ -15,7 +14,6 @@ export default function HomePage() {
   const { token, user, logout } = useAuth();
   const { state, dispatch } = useNotes();
   const { page, cache } = state as any; // we will extend state type later
-  const { enabled: sanitizerOn, toggleSanitizer } = useSanitizer();
   const navigate = useNavigate();
 
   const pagesWindow = (pg: number, total: number) => {
@@ -59,22 +57,6 @@ export default function HomePage() {
   return (
     <div>
       <h1>Notes</h1>
-      <div style={{ marginBottom: '1rem' }}>
-        <button
-          onClick={toggleSanitizer}
-          data-testid="sanitizer_toggle"
-          style={{
-            padding: '0.5rem 1rem',
-            backgroundColor: sanitizerOn ? '#4CAF50' : '#f44336',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
-        >
-          Sanitizer: {sanitizerOn ? 'ON' : 'OFF'}
-        </button>
-      </div>
       {!token && (
         <>
           <button data-testid="go_to_login_button" onClick={() => navigate('/login')}>Go to Login</button>
