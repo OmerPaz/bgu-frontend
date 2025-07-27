@@ -1,11 +1,6 @@
 import { test, expect } from '@playwright/test';
 
 const ROOT = 'http://localhost:3000';
-const API = 'http://localhost:3001';
-
-test.beforeEach(async () => {
-  await fetch(`${API}/test/wipe`, { method: 'DELETE' });
-});
 
 const randomStr = () => Math.random().toString(36).substring(2, 8);
 
