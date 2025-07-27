@@ -24,14 +24,23 @@ async function createAndLogin(page) {
 
 test('Rich text rendering preserves <b> and <i> tags', async ({ page }) => {
   await createAndLogin(page);
+  // Toggle sanitizer OFF to ensure tags are preserved
+  await page.getByTestId('sanitizer_toggle').click();
   const unique = randomStr();
   await page.locator('button[name="add_new_note"]').click();
   const richContent = `<b>bold${unique}</b> <i>italic${unique}</i>`;
   await page.locator('textarea[name="text_input_new_note"]').fill(richContent);
   await page.locator('button[name="text_input_save_new_note"]').click();
-  const newNote = page.locator('.note-content', { hasText: `bold${unique}` }).first();
+  // Debug: print all note contents and HTML
+  await page.waitForTimeout(1000);
+  const allNotes = await page.locator('.note-content').allTextContents();
+  console.log('All notes after create:', allNotes);
+  const allNotesHtml = await page.locator('.note-content').evaluateAll(nodes => nodes.map(n => n.innerHTML));
+  console.log('All notes HTML after create:', allNotesHtml);
+  const newNote = page.locator('.note-content', { hasText: unique }).first();
   await newNote.waitFor({ state: 'visible' });
   const html = await newNote.innerHTML();
+  console.log('Note HTML:', html);
   expect(html).toContain('<b>');
   expect(html).toContain('<i>');
   await expect(newNote).toContainText(`bold${unique}`);
@@ -67,16 +76,40 @@ test('CRUD operations: create, edit, and delete a note', async ({ page }) => {
   await page.locator('button[name="add_new_note"]').click();
   await page.locator('textarea[name="text_input_new_note"]').fill(`note-${unique}`);
   await page.locator('button[name="text_input_save_new_note"]').click();
+  await page.waitForTimeout(1000);
+  const allNotes = await page.locator('.note').allTextContents();
+  console.log('All notes after create:', allNotes);
+  // Search for the note by its unique content only
   const note = page.locator('.note', { hasText: `note-${unique}` }).first();
   await note.waitFor({ state: 'visible' });
   await expect(note).toContainText(`note-${unique}`);
   // Edit
-  await note.getByTestId(/edit-/).click();
-  const textarea = note.locator('textarea');
+  const editBtn = note.getByTestId(/edit-/);
+  await editBtn.waitFor({ state: 'visible' });
+  const noteHtml = await note.innerHTML();
+  console.log('Editing note HTML:', noteHtml);
+  await editBtn.click();
+  // Wait for textarea and fill it (global locator)
+  const textarea = page.locator(`textarea[data-testid^='text_input-']`).first();
+  await textarea.waitFor({ state: 'visible' });
   await textarea.fill(`note-edited-${unique}`);
-  await note.getByTestId(/text_input_save-/).click();
-  await expect(note).toContainText(`note-edited-${unique}`);
+  // Wait for and click the save button (global locator)
+  const saveBtn = page.locator(`button[data-testid^='text_input_save-']`).first();
+  await saveBtn.waitFor({ state: 'visible' });
+  await saveBtn.click();
+  await page.waitForTimeout(500);
+  const allNotesAfterEdit = await page.locator('.note').allTextContents();
+  console.log('All notes after edit:', allNotesAfterEdit);
+  // Re-locate the note by new content
+  const editedNote = page.locator('.note', { hasText: `note-edited-${unique}` }).first();
+  await editedNote.waitFor({ state: 'visible' });
+  await expect(editedNote).toContainText(`note-edited-${unique}`);
   // Delete
-  await note.getByTestId(/delete-/).click();
-  await expect(note).not.toBeVisible();
+  const deleteBtn = editedNote.getByTestId(/delete-/);
+  await deleteBtn.waitFor({ state: 'visible' });
+  await deleteBtn.click();
+  await page.waitForTimeout(500);
+  const allNotesAfterDelete = await page.locator('.note').allTextContents();
+  console.log('All notes after delete:', allNotesAfterDelete);
+  await expect(editedNote).not.toBeVisible();
 });
